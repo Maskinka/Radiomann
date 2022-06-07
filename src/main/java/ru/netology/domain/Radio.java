@@ -1,27 +1,37 @@
 package ru.netology.domain;
 
 public class Radio {
-
+    private int amountRadioStation = 10;
     private int currentRadioStation;
     private int currentSoundVolume;
 
-    public void setCurrentRadioStation(int CurrentRadioStation) {
-        if (CurrentRadioStation < 0) {
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation < 0) {
             return;
         }
-        if (CurrentRadioStation > 9) {
+        if (currentRadioStation > amountRadioStation - 1) {
             return;
         }
-        this.currentRadioStation = CurrentRadioStation;
+        this.currentRadioStation = currentRadioStation;
+    }
+
+    public Radio(int amountRadioStation) {
+        this.amountRadioStation = amountRadioStation;
+    }
+
+    public Radio() {
+    }
+
+    public int getAmountRadioStation() {
+        return amountRadioStation;
     }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
-
     public void next() {
-        if (currentRadioStation == 9) {
+        if (currentRadioStation == amountRadioStation - 1) {
             currentRadioStation = 0;
         } else {
             currentRadioStation = currentRadioStation + 1;
@@ -30,29 +40,28 @@ public class Radio {
 
     public void prev() {
         if (currentRadioStation == 0) {
-            currentRadioStation = 9;
+            currentRadioStation = amountRadioStation - 1;
         } else {
             currentRadioStation = currentRadioStation - 1;
         }
     }
 
-    public void setCurrentSoundVolume(int CurrentSoundVolume) {
-        if (CurrentSoundVolume < 0) {
+    public void setCurrentSoundVolume(int currentSoundVolume) {
+        if (currentSoundVolume < 0) {
             return;
         }
-        if (CurrentSoundVolume > 10) {
+        if (currentSoundVolume > 100) {
             return;
         }
-        this.currentSoundVolume = CurrentSoundVolume;
+        this.currentSoundVolume = currentSoundVolume;
     }
 
     public int getCurrentSoundVolume() {
         return currentSoundVolume;
     }
 
-
     public void increaseVolume() {
-        if (currentSoundVolume < 10) {
+        if (currentSoundVolume < 100) {
             currentSoundVolume = currentSoundVolume + 1;
         }
     }
